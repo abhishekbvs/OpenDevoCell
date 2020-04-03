@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from graphene_django.views import GraphQLView
+from django.conf.urls import url, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', GraphQLView.as_view(graphiql=True)),
+    url('', include('social_django.urls', namespace='social'))
 ]
 
 admin.site.site_header = 'OpenDevoCell Admin'
