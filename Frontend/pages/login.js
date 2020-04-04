@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react'
 import Cookies from 'universal-cookie';
 import { useRouter } from 'next/router';
 import { GoogleLogin } from 'react-google-login';
-
-
+import TopNav from '../components/topNav';
+import Footer from '../components/footer';
+import Loading from '../components/loading';
 import '../styles/login.sass'
 import '../styles/bootstrap.sass'
 
 import dataFetch from "../utils/dataFetch"
-import LoadingScreen from "../components/loadingScreen";
-import LoginPageWrapper from "../components/LoginPage"
 
+import { Layout } from 'antd';
+
+const { Content } = Layout;
 const cookies = new Cookies()
 
 function LoginPage(props) {
@@ -87,13 +89,10 @@ function LoginPage(props) {
                     <GoogleLogin
                         clientId="762421344167-8q93vtrpbeobiabt7nn7krjtippivnvf.apps.googleusercontent.com"
                         onSuccess={loginWithGoogle}
-                        icon={false}
+                        icon={true}
                         cookiePolicy={'single_host_origin'}
                         className="login-button-google"
-                        children={<div>
-                            {/* <img src={require('../images/logos/google.png')}/> */}
-                            Login with Google
-                        </div>}
+                        children={<div>Login with Google</div>}
                     />
                 ) : null
             }
@@ -102,10 +101,18 @@ function LoginPage(props) {
   </React.Fragment>);
 
   return !isLoading && isLoaded ? (
-    <LoginPageWrapper>  
-      {SSOCards}
-    </LoginPageWrapper>
-  ):<LoadingScreen text={setQueried ? "Logging you in. If it takes too long, please try again later." : "Hold on, while we are opening the login page"} />
+    <React.Fragment>
+       <Layout style= {{ minHeight: "100vh" }}>
+        <TopNav/>
+        <Content>
+          <div className="d-flex align-items-center justify-content-center">
+            {SSOCards}
+          </div>
+        </Content>
+        <Footer/>
+        </Layout>
+    </React.Fragment>
+  ): <Loading/>
 }
 
 export default LoginPage;
