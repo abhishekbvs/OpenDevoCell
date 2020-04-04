@@ -3,9 +3,9 @@ import graphql_social_auth
 import graphql_jwt
 from django.contrib.auth.models import User
 from graphql_jwt.shortcuts import get_token, get_refresh_token, create_refresh_token
-# class Query():
 
-
+class StatusObj(graphene.ObjectType):
+    googleSignIn = graphene.Boolean()
 
 class UserType(graphene.ObjectType):
     username = graphene.Field(graphene.String)
@@ -18,6 +18,12 @@ class SocialAuth(graphql_social_auth.SocialAuthJWT):
     def resolve(cls, root, info, social, **kwargs):
         return cls(user=social.user, token=get_token(social.user))
 
+class Query( graphene.ObjectType):
+    status = graphene.Field(StatusObj)
+
+    @staticmethod
+    def resolve_status(self, info, **kwargs):
+        return StatusObj(googleSignIn=True)
 
 class Mutation(graphene.ObjectType):
     token_auth = graphql_jwt.ObtainJSONWebToken.Field()
@@ -25,4 +31,4 @@ class Mutation(graphene.ObjectType):
     refresh_token = graphql_jwt.Refresh.Field()
     social_auth = SocialAuth.Field()
 
-schema=graphene.Schema(mutation=Mutation)
+schema=graphene.Schema(mutation=Mutation, query=Query)
