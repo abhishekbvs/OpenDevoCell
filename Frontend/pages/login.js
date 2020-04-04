@@ -5,12 +5,14 @@ import { GoogleLogin } from 'react-google-login';
 import TopNav from '../components/topNav';
 import Footer from '../components/footer';
 import Loading from '../components/loading';
-import '../styles/login.sass'
-import '../styles/bootstrap.sass'
+
 
 import dataFetch from "../utils/dataFetch"
-
 import { Layout } from 'antd';
+
+import '../styles/login.sass'
+import '../styles/bootstrap.sass'
+import 'antd/dist/antd.css'
 
 const { Content } = Layout;
 const cookies = new Cookies()
