@@ -7,6 +7,7 @@ import { Layout, Breadcrumb } from 'antd';
 
 import 'antd/dist/antd.css'
 import '../styles/homepage.sass';
+import '../styles/bootstrap.sass'
 
 const { Content } = Layout;
 
