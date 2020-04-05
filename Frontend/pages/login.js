@@ -2,18 +2,11 @@ import React, { useState, useEffect } from 'react'
 import Cookies from 'universal-cookie';
 import { useRouter } from 'next/router';
 import { GoogleLogin } from 'react-google-login';
-import TopNav from '../components/topNav';
-import Footer from '../components/footer';
+import Base from '../components/base';
 import Loading from '../components/loading';
 import dataFetch from "../utils/dataFetch"
-import { Layout } from 'antd';
 import { Card } from 'antd';
 
-import '../styles/login.sass'
-import '../styles/bootstrap.sass'
-import 'antd/dist/antd.css'
-
-const { Content } = Layout;
 const cookies = new Cookies()
 
 function LoginPage(props) {
@@ -99,26 +92,18 @@ function LoginPage(props) {
   </React.Fragment>);
 
   return !isLoading && isLoaded ? (
-    <React.Fragment>
-      <Layout style={{ minHeight: "100vh" }}>
-        <TopNav />
-        <Content>
-
-          {authFail ? errorMessage : null}
-          <div className="d-flex align-items-center justify-content-center" style={{ padding: 25 }}>
-            <Card title="Authorization Required" style={{ width: 400 }}>
-              <p>To use OpenDevoCell you need to connect it to your Google account. This Process
-              is secure and your password will not be given to OpenDevoCell
-              </p>
-              {GoogleLoginCard}
-            </Card>
-          </div>
-
-        </Content>
-        <Footer />
-      </Layout>
-    </React.Fragment>
-  ) : <Loading />
+    <Base>
+      {authFail ? errorMessage : null}
+      <div className="d-flex align-items-center justify-content-center p-3">
+        <Card className="card-shadow" title="Authorization Required" style={{ width: 400 }}>
+          <p>To use OpenDevoCell you need to connect it to your Google account. This Process
+          is secure and your password will not be given to OpenDevoCell
+          </p>
+          {GoogleLoginCard}
+        </Card>
+      </div>
+    </Base>
+  ) : <Loading text={setQueried ? "We are logging you in. Please wait" : "Opening Login Page"}/>
 }
 
 export default LoginPage;

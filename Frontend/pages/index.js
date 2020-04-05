@@ -10,7 +10,7 @@ const { Footer, Content } = Layout;
 
 const HomePage = () => {
   return (
-    <Base>
+    <Base loginRequired>
       content
     </Base>
   )

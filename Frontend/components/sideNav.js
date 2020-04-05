@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Layout, Menu } from 'antd';
 import { LogoutOutlined,DashboardOutlined, UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 
@@ -14,19 +15,18 @@ const SideNav = () =>{
               defaultOpenKeys={['sub1']}
               style={{ height: '100%', borderRight: 0 }}
             >
-            <Menu.Item key="4">
-                <span>
-                    <DashboardOutlined />
-                    Dashboard
-                </span>
-            </Menu.Item>
+           
+              <Menu.Item key="4">
+                <DashboardOutlined />
+                <Link href={'/'}>Dashboard</Link> 
+              </Menu.Item>
               <SubMenu
                 key="sub2"
                 title={
                   <span>
                     <LaptopOutlined />
-                  DevoZoo
-                </span>
+                    DevoZoo
+                  </span>
                 }
               >
                 <Menu.Item key="5">SPIM Microsopy data</Menu.Item>
@@ -48,18 +48,19 @@ const SideNav = () =>{
                 title={
                   <span>
                     <UserOutlined />
-                  Profile
+                    Account
                 </span>
                 }
               >
-                <Menu.Item key="1">Edit Profile</Menu.Item>
+                <Menu.Item key="1">
+                  <Link href={'/'}>Update Profile</Link> 
+                </Menu.Item>
               </SubMenu>
               <Menu.Item key="4">
-                <span>
-                    <LogoutOutlined />
-                    Logout
-                </span>
-               
+                <LogoutOutlined />
+                <Link href={'/logout'}>
+                  Logout
+                </Link>
             </Menu.Item>
             </Menu>
           </Sider>
