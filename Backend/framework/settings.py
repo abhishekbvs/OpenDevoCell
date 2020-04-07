@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'graphene_django',
     'social_django',
+    'import_export',
+    'easy_select2',
+    'profiles'
 ]
 
 MIDDLEWARE = [
