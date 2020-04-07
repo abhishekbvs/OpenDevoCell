@@ -17,7 +17,7 @@ const Base = ({children, loginRequired}) => {
       <React.Fragment>
         <Head title="OpenDevoCell" />
         <Layout style={{ minHeight: "100vh" }}>
-          <TopNav/>
+          <TopNav loginRequired/>
           <Layout>
             <SideNav/>
             <Layout style={{ padding: '24px 24px 24px' }}>
@@ -27,7 +27,7 @@ const Base = ({children, loginRequired}) => {
                 <Breadcrumb.Item>App</Breadcrumb.Item>
               </Breadcrumb> */}
               <Content
-                className="site-layout-background"
+                className=""
                 style={{
                   padding: 24,
                   margin: 0,
