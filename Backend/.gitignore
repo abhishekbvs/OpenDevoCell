@@ -3,5 +3,6 @@ include/
 lib/
 staticfiles/
 share/
+media/
 __pycache__/
 db.sqlite3

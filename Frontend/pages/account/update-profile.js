@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import dataFetch from "../../utils/dataFetch";
+import fileUpload from "../../utils/fileUpload";
 import Cookies from "universal-cookie";
 import Link from "next/link";
 import Base from '../../components/base';
@@ -20,7 +21,7 @@ const UpdateProfilePage = () => {
     const [dataLoading, setDataLoading] = useState(false);
     const [success, setSuccess] = useState("");
     const [error, setErrorText] = useState("");
-    // const [data, setData] = useState(false);
+    const [data, setData] = useState(false);
 
     const query = `
         query {
@@ -35,20 +36,16 @@ const UpdateProfilePage = () => {
     }
     `;
 
-    const updateProfileQuery = `
-        mutation ($firstName: String!, $lastName: String!, $phoneNo: String!){
-    updateProfile(firstName: $firstName, lastName:$lastName, phone:$phoneNo){
+    const updateProfileQuery = `mutation ($details:ProfileDetailsObj){
+        updateProfile(details:$details)
+        {
         status
-    }
+        }
     }
     `;
+    
 
     const getProfile = async () => await dataFetch({query});
-    
-    const submitForm = async variables =>
-    dataFetch({ query: updateProfileQuery, variables });
-
-    const uploadFile = async data => await fileUpload(data);
 
     useEffect(() => {
         if(!isQueried){
@@ -68,8 +65,18 @@ const UpdateProfilePage = () => {
         }
     });
 
+    const uploadFile = async data => await fileUpload(data);
+
+    const submitForm = async variables => dataFetch({ query: updateProfileQuery, variables });
+
     const updateProfile = () => {
-        const variables = {username, firstName, lastName, email, phoneNo};
+        const variables = {
+            "details": {
+                "firstName": firstName,
+                "lastName": lastName,
+                "phone": phoneNo
+            }
+        };
         submitForm(variables).then(r=>{
           if (Object.prototype.hasOwnProperty.call(r, "errors")) {
             setErrorText(r.errors[0].message)
@@ -94,7 +101,8 @@ const UpdateProfilePage = () => {
         }`;
             data.append('query', query);
             uploadFile({data}).then((response) => (
-            setProfilePic(response.data.UpdateProfilePic.fileName)
+            // console.log(response)
+            setProfilePic(response.data.updateProfilePic.fileName)
             ));
         }
     };
@@ -122,6 +130,7 @@ const UpdateProfilePage = () => {
                         value={username}
                         onChange={e=> setUsername(e.target.value)}
                         className="form-control"
+                        disabled={true}
                         />
                     </div>
                     <div className="col-md-3">
@@ -165,6 +174,7 @@ const UpdateProfilePage = () => {
                         value={email}
                         onChange={e=> setEmail(e.target.value)}
                         className="form-control"
+                        disabled={true}
                         />
                     </div>
                     <div className="col-md-6">
@@ -178,8 +188,6 @@ const UpdateProfilePage = () => {
                         />
                     </div>
                     </div>
-                    
-                   
                 
                     <div className="row mt-4">
                     <label>About</label>
@@ -205,7 +213,7 @@ const UpdateProfilePage = () => {
                         <Result
                             status="success"
                             title="Successfully saved your details"
-                            extra={<Link to="/"><Button type="primary">Back Home</Button></Link>}
+                            extra={<Link href="/"><Button type="primary">Back to Dashboard</Button></Link>}
                         />
                         )
                         : error!== '' ?

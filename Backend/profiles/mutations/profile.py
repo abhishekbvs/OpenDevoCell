@@ -24,7 +24,7 @@ class UpdateProfilePic(graphene.Mutation):
         profile.profile_pic = profilePic
         profile.save()
 
-        return UploadFileObj(fileName=profile.profile_pic)
+        return UploadFileObj(fileName=info.context.build_absolute_uri(profile.profile_pic.url))
 
 class UpdateProfile(graphene.Mutation):
     class Arguments:
@@ -48,13 +48,11 @@ class UpdateProfile(graphene.Mutation):
                 user.save()
             if details.lastName is not None:
                 user.last_name = details.lastName
-                user.save()
-            
+                user.save()s
             if details.phone is not None:
                 profile.phone = details.phone
         
         profile.save()
-
         return UpdateProfileObj(status=True)
 
 class Mutation(graphene.ObjectType):
