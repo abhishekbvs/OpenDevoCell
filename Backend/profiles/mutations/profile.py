@@ -48,7 +48,7 @@ class UpdateProfile(graphene.Mutation):
                 user.save()
             if details.lastName is not None:
                 user.last_name = details.lastName
-                user.save()s
+                user.save()
             if details.phone is not None:
                 profile.phone = details.phone
         
