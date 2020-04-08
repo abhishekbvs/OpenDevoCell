@@ -36,21 +36,37 @@
             margin: 0;
             max-width: 400px;
         }
+
+        .login .submit-row
+        {
+            display: flex;
+            justify-content: center;
+            padding: 1.5rem 0;
+        }
+
+        .login .submit-row input
+        {
+            background: #ff9933;
+            color: #336;
+            display: block;
+            width: 100%;
+        }
     </style>
     <div class="head">
         <h1>OpenDevoCell Backend</h1>
     </div>
 {% endblock %}
 {% block content %}
+    {{block.super}}
     <style>
         #content-in
         {
             text-align: center;
             padding: 1rem;
-            background-color:  #ff9933;
+            /* background-color:  #ff9933; */
         }
         #google-btn{
-            color: #fff
+            color: #336
         }
     </style>
     <div id="content-in">

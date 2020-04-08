@@ -17,13 +17,19 @@ from django.contrib import admin
 from django.urls import path
 from graphene_django.views import GraphQLView
 from django.conf.urls import url, include
+from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', csrf_exempt(GraphQLView.as_view(graphiql=True))),
-    url('', include('social_django.urls', namespace='social'))
+    url('', include('social_django.urls', namespace='social')),
 ]
+
+urlpatterns+= staticfiles_urlpatterns()
+urlpatterns+= static(settings.MEDIA_URL,document_root =settings.MEDIA_ROOT)
 
 admin.site.site_header = 'OpenDevoCell Admin'
 admin.site.site_title = 'OpenDevoCell Backend'
