@@ -5,11 +5,26 @@ from profiles.models import Profile
 class UpdateProfileObj(graphene.ObjectType):
     status = graphene.Boolean()
 
+class UploadFileObj(graphene.ObjectType):
+    fileName = graphene.String()
 
 class ProfileDetailsObj(graphene.InputObjectType):
     firstName = graphene.String(required=False)
     lastName = graphene.String(required=False)
     phone = graphene.String(required=False)
+
+class UpdateProfilePic(graphene.Mutation):
+    Output = UploadFileObj
+
+    @login_required
+    def mutate(self, info):
+        user = info.context.user
+        profilePic = info.context.FILES['imageFile']
+        profile = Profile.objects.get(user=user)
+        profile.profile_pic = profilePic
+        profile.save()
+
+        return UploadFileObj(fileName=profile.profile_pic)
 
 class UpdateProfile(graphene.Mutation):
     class Arguments:
@@ -44,4 +59,5 @@ class UpdateProfile(graphene.Mutation):
 
 class Mutation(graphene.ObjectType):
     updateProfile = UpdateProfile.Field()
+    updateProfilePic = UpdateProfilePic.Field()
 

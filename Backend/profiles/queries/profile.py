@@ -9,11 +9,11 @@ class ProfileObj(graphene.ObjectType):
     lastName = graphene.String()
     email = graphene.String()
     phone = graphene.String()
-    photo = graphene.String()
+    profilePic = graphene.String()
 
-    def resolve_photo(self, info):
-        if self.photo and hasattr(self.photo, 'url'):
-            return info.context.build_absolute_uri(self.photo.url)
+    def resolve_profilePic(self, info):
+        if self.profile_pic and hasattr(self.profile_pic, 'url'):
+            return info.context.build_absolute_uri(self.profile_pic.url)
         return None
     
     def resolve_firstName(self, info):

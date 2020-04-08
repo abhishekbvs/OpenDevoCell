@@ -28,4 +28,4 @@ urlpatterns = [
 admin.site.site_header = 'OpenDevoCell Admin'
 admin.site.site_title = 'OpenDevoCell Backend'
 admin.site.index_title = 'OpenDevoCell Admin Dashboard'
-admin.site.site_url=''
+admin.site.site_url='https://open-devo-cell.now.sh'
