@@ -60,7 +60,7 @@ const TopNav = ({ loginRequired }) => {
             <Header className="header">
                 
                 <a className="float-left" style={{ color: "white", fontSize: "1.5em", fontWeight: 700 }}>OpenDevoCell</a>
-
+               
                 {isLoading && loginRequired ? (
 
                     <div className="align-middle float-right">

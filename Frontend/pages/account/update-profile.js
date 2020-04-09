@@ -2,15 +2,13 @@ import { Card } from 'antd';
 import React, { useEffect, useState } from 'react';
 import dataFetch from "../../utils/dataFetch";
 import fileUpload from "../../utils/fileUpload";
-import Cookies from "universal-cookie";
 import Link from "next/link";
 import Base from '../../components/base';
+import Loading from '../../components/loading';
 import { Upload, Button, Result } from "antd";
 import { UploadOutlined } from '@ant-design/icons';
 const ReactQuill = typeof window === 'object' ? require('react-quill') : () => false;
 import 'react-quill/dist/quill.snow.css';
-
-const cookies = new Cookies();
 
 const UpdateProfilePage = () => {
     const [isLoading, setLoaded] = useState(false);
@@ -191,13 +189,13 @@ const UpdateProfilePage = () => {
                                         </div>
                                         <div className="col-md-3">
                                             <div className="row-md-6 mt-3">
-                                                <img className="shadow-lg" alt="profilepic" src={profilePic} style={{ height: '20vh' }} />
+                                                <img className="shadow" alt="profilepic" src={profilePic} style={{ height: '20vh', width: '20vh' }} />
                                             </div>
                                             <div className="col-md-12  mt-3 float-right">
                                                 <Upload {...uploadProps} accept="image/*">
                                                     <Button className="row" style={{ width: '20vh' }}>
                                                         <UploadOutlined />
-                                                        Select File
+                                                        Change Profile Pic
                                                     </Button>
                                                 </Upload>
                                             </div>
@@ -243,11 +241,7 @@ const UpdateProfilePage = () => {
                 </div>
             </React.Fragment>
         </Base>
-    ) : (
-            <Base>
-                Hello
-            </Base>
-        )
+    ) : <Loading text={ "We are opening the page. Please wait"}/>
 };
 
 export default UpdateProfilePage;

@@ -63,8 +63,9 @@ const SideNav = () =>{
                 <Link href={'/logout'}>
                  <a>Logout</a> 
                 </Link>
-            </Menu.Item>
+              </Menu.Item>
             </Menu>
+          
           </Sider>
         </React.Fragment>
     )
