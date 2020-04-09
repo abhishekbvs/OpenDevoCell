@@ -2,7 +2,9 @@ import axios from 'axios';
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
-const API_URL = 'http://localhost:8000/';
+
+// const API_URL = 'http://localhost:8000/';
+const API_URL = 'https://open-devo-cell-1.herokuapp.com';
 
 export default ({ data }) => {
     const token = cookies.get('token');

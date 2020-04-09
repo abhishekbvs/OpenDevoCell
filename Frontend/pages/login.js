@@ -95,7 +95,7 @@ function LoginPage(props) {
     <Base>
       {authFail ? errorMessage : null}
       <div className="d-flex align-items-center justify-content-center p-3">
-        <Card className="card-shadow" title="Authorization Required" style={{ width: 400 }}>
+        <Card className="shadow card-shadow" title="Authorization Required" style={{ width: 400 }}>
           <p>To use OpenDevoCell you need to connect it to your Google account. This Process
           is secure and your password will not be given to OpenDevoCell
           </p>
