@@ -20,7 +20,7 @@ const SideNav = () =>{
             >
               <Menu.Item key="dashboard">
                 <DashboardOutlined />
-                <Link href={'/'}>Dashboard</Link> 
+                <Link href={'/'}><a>Dashboard</a></Link> 
               </Menu.Item>
               <SubMenu
                 key="devzoo"
@@ -55,13 +55,13 @@ const SideNav = () =>{
                 }
               >
                 <Menu.Item key="update-profile">
-                  <Link href={'/account/update-profile'}>Update Profile</Link> 
+                  <Link href={'/account/update-profile'}><a>Update Profile</a></Link> 
                 </Menu.Item>
               </SubMenu>
               <Menu.Item key="logout">
                 <LogoutOutlined />
                 <Link href={'/logout'}>
-                  Logout
+                 <a>Logout</a> 
                 </Link>
             </Menu.Item>
             </Menu>

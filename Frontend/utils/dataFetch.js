@@ -3,8 +3,8 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
-// const API_URL = 'http://localhost:8000';
-const API_URL = 'https://open-devo-cell-1.herokuapp.com';
+const API_URL = 'http://localhost:8000';
+// const API_URL = 'https://open-devo-cell-1.herokuapp.com';
 
 export default ({ query, variables, token }) => {
     const body = {
