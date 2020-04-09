@@ -9,6 +9,7 @@ class ProfileObj(graphene.ObjectType):
     lastName = graphene.String()
     email = graphene.String()
     phone = graphene.String()
+    about = graphene.String()
     profilePic = graphene.String()
 
     def resolve_profilePic(self, info):

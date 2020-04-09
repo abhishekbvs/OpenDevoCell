@@ -12,6 +12,7 @@ class ProfileDetailsObj(graphene.InputObjectType):
     firstName = graphene.String(required=False)
     lastName = graphene.String(required=False)
     phone = graphene.String(required=False)
+    about = graphene.String()
 
 class UpdateProfilePic(graphene.Mutation):
     Output = UploadFileObj
@@ -51,6 +52,8 @@ class UpdateProfile(graphene.Mutation):
                 user.save()
             if details.phone is not None:
                 profile.phone = details.phone
+            if details.about is not None:
+                profile.about = details.about
         
         profile.save()
         return UpdateProfileObj(status=True)

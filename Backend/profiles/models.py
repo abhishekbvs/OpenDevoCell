@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from ckeditor.fields import RichTextField
 from django.db.models.signals import post_save
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
@@ -23,6 +23,7 @@ class Profile(models.Model):
                 verbose_name='User',
     )
     phone = models.CharField(max_length=12, blank=True, null=True)
+    about = RichTextField(max_length=1000, null=True, blank=True)
     profile_pic = models.ImageField(default='default.png', upload_to=get_profile_pic_path, null=True, blank=True)
 
     def __str__(self):
