@@ -5,7 +5,7 @@ import '../styles/homepage.sass';
 const HomePage = (props) => {
   return (
     <Base loginRequired >
-      <Link href="/analyse/cell-segmentation">Cell Segmentation</Link>
+      <Link href="/analyse/cell-segmentation"><a>Cell Segmentation</a></Link>
     </Base>
   )
 };
