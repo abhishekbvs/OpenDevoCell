@@ -1,0 +1,22 @@
+from django.db import models
+from django.contrib.auth.models import User
+from django.utils import timezone
+# Create your models here.
+
+class Video(models.Model):
+    def get_file_path(self, filename):
+        return 'uploads/devozoo/videos/o' + filename
+    name = models.CharField(max_length=20, null=True, blank=True)
+    video_file =  models.FileField(upload_to=get_file_path)
+    file_id =  models.CharField(max_length=50)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+    )
+    date = models.DateTimeField(verbose_name="Uploaded time", default=timezone.now, null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = "Videos"
+
+    def __str__(self):
+        return self.name+' (id: '+self.file_id+')'
+
