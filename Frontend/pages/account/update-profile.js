@@ -195,7 +195,7 @@ const UpdateProfilePage = () => {
                                                 <Upload {...uploadProps} accept="image/*">
                                                     <Button className="row" style={{ width: '20vh' }}>
                                                         <UploadOutlined />
-                                                        Change Profile Pic
+                                                        Change Picture
                                                     </Button>
                                                 </Upload>
                                             </div>

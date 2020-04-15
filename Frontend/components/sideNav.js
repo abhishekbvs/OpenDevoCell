@@ -22,17 +22,12 @@ const SideNav = () =>{
                 <DashboardOutlined />
                 <Link href={'/'}><a>Dashboard</a></Link> 
               </Menu.Item>
-              <SubMenu
-                key="devzoo"
-                title={
-                  <span>
-                    <LaptopOutlined />
-                    DevoZoo
-                  </span>
-                }
-              >
-                <Menu.Item key="spim-data">SPIM Microsopy data</Menu.Item>
-              </SubMenu>
+              
+              <Menu.Item key="devozoo">
+                <LaptopOutlined />
+                <Link href={'/devozoo'}><a>DevoZoo</a></Link> 
+              </Menu.Item>
+            
               <SubMenu
                 key="sub2"
                 title={
