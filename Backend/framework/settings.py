@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'social_django',
     'import_export',
     'easy_select2',
+    'ckeditor',
     'profiles',
     'devozoo',
 ]

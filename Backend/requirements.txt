@@ -17,6 +17,7 @@ django-heroku==0.3.1
 django-import-export==2.0.2
 django-js-asset==1.2.2
 et-xmlfile==1.0.1
+googledrivedownloader==0.4
 graphene==2.1.8
 graphene-django==2.9.0
 graphql-core==2.3.1

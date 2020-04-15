@@ -10,7 +10,22 @@ class VideoResource(resources.ModelResource):
         model = Video
 
 @admin.register(Video)
-class WebSpaceAdmin(ImportExportModelAdmin, ExportActionMixin, admin.ModelAdmin):
+class DevoZooVideo(ImportExportModelAdmin, ExportActionMixin, admin.ModelAdmin):
     fields = [('name', 'user'), ('file_id', 'video_file'), 'date']
 
     list_display = ('name','file_id', 'user', 'date',)
+
+
+@admin.register(Dataset)
+class DatasetAdmin(ImportExportModelAdmin, ExportActionMixin, admin.ModelAdmin):
+    fields = [('name', 'category'), 
+            'link']
+
+    list_display = ('name','category',)
+
+@admin.register(DatasetCategory)
+class DatasetCategoryAdmin(ImportExportModelAdmin, ExportActionMixin, admin.ModelAdmin):
+    fields = [('name')]
+    list_display = ('name',)
+
+
