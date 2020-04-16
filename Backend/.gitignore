@@ -5,5 +5,4 @@ staticfiles/
 share/
 media/
 __pycache__/
-migrations/
 db.sqlite3
