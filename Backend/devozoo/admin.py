@@ -18,14 +18,13 @@ class DevoZooVideo(ImportExportModelAdmin, ExportActionMixin, admin.ModelAdmin):
 
 @admin.register(Dataset)
 class DatasetAdmin(ImportExportModelAdmin, ExportActionMixin, admin.ModelAdmin):
-    fields = [('name', 'category'), 
-            'link']
+    fields = [('name', 'category'), 'link', 'description']
 
     list_display = ('name','category',)
 
 @admin.register(DatasetCategory)
 class DatasetCategoryAdmin(ImportExportModelAdmin, ExportActionMixin, admin.ModelAdmin):
-    fields = [('name')]
+    fields = ['name', 'description']
     list_display = ('name',)
 
 

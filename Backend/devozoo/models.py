@@ -23,7 +23,7 @@ class Video(models.Model):
 
 class DatasetCategory(models.Model):
     name = models.CharField(max_length=50, null=True, blank=True)
-
+    description = models.CharField(max_length=350, null=True, blank=True)
     class Meta:
         verbose_name_plural = "Categories"
 
@@ -33,6 +33,7 @@ class DatasetCategory(models.Model):
 
 class Dataset(models.Model):
     name = models.CharField(max_length=50)
+    description = models.CharField(max_length=350, null=True, blank=True)
     link = models.URLField(max_length=250)
     category = models.ForeignKey(DatasetCategory, on_delete=models.CASCADE, verbose_name='Category', related_name='Dataset')
 
