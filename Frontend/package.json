@@ -9,6 +9,10 @@
     "start": "next start"
   },
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhishekbvs/OpenDevoCell.git"
+  },
   "author": "Abhishek Bvs",
   "license": "ISC",
   "dependencies": {

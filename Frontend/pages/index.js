@@ -5,7 +5,7 @@ import '../styles/homepage.sass';
 const HomePage = (props) => {
   return (
     <Base loginRequired >
-      <h6>DevoWorm Dashboard</h6>
+      <h5>DevoWorm Dashboard</h5>
       <Link href="/analyse/cell-segmentation"><a>Cell Segmentation</a></Link>
     </Base>
   )
